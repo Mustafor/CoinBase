@@ -9,10 +9,31 @@ body{
 
 .button-style{
     background-image: linear-gradient(180deg, #FD749B, #281ACB);
+}
+
+.button-style:hover{
+    background-image: linear-gradient(90deg, #FD749B, #281ACB);
+}
+
+.active{
+    background-image: linear-gradient(180deg, #FD749B, #281ACB);
+}
+
+.ant-btn{
+    background-image: linear-gradient(180deg, #FD749B, #281ACB);
+    color: white;
+    font-weight: 600;
     transition: all 0.3s linear;
 
     &:hover{
-        background-image: transparent;
-        color: black;
+        background-image: linear-gradient(90deg, #FD749B, #281ACB);
     }
 }
+
+.search-input{
+    background-image: url("./assets/images/search.svg");
+    background-repeat: no-repeat;
+    background-size: 15px 15px; 
+    background-position: 27px center;
+}
+
