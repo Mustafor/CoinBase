@@ -74,7 +74,7 @@ function Navbar() {
   return (
     <div data-aos="fade-up-right" className='w-[20%] border-r-[2px] pt-[44px] pr-[17px] border-white h-[100vh] overflow-y-auto'>
         {NavbarList.map(item => (
-            <NavLink className={"flex pl-[55px] relative py-[18px] rounded-r-[100px] items-center space-x-[21px]"} to={item.path}>
+            <NavLink key={item.id} className={"flex pl-[55px] relative py-[18px] rounded-r-[100px] items-center space-x-[21px]"} to={item.path}>
                 {item.icon}
                 <span className='text-white font-semibold text-[15px] leading-[18px]'>{item.title}</span>
                 {item.notificationCount ?

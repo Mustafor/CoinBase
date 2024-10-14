@@ -6,5 +6,6 @@ import Bitcoin from "./Bitcoin"
 import Paymants from "./Payments"
 import Transactions from "./Transactions"
 import Statistcs from "./Statistics"
+import AgentAdd from "./AgentAdd";
 
-export {Overview, Users, Agents, Cards, Bitcoin, Paymants, Transactions, Statistcs}
+export {Overview, Users, Agents, Cards, Bitcoin, Paymants, Transactions, Statistcs, AgentAdd}

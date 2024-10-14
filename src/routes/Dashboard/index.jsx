@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Agents, Bitcoin, Cards, Overview, Paymants, Statistcs, Transactions, Users } from '../../pages/Dashboard'
+import { AgentAdd, Agents, Bitcoin, Cards, Overview, Paymants, Statistcs, Transactions, Users } from '../../pages/Dashboard'
 import Navbar from '../../components/Navbar'
 import Header from '../../components/Header'
 
@@ -15,6 +15,7 @@ function DashboardRoutes() {
         <Route path='/' element={<Overview/>}/>
         <Route path='/users' element={<Users/>}/>
         <Route path='/agents' element={<Agents/>}/>
+        <Route path='/agents/add' element={<AgentAdd/>}/>
         <Route path='/cards' element={<Cards/>}/>
         <Route path='/bitcoin' element={<Bitcoin/>}/>
         <Route path='/paymants' element={<Paymants/>}/>
