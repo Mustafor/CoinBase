@@ -10,14 +10,33 @@ function Agents() {
   const navigate = useNavigate()
   const { agents, setAgents } = useContext(Context)
   const [searchQuery, setSearchQuery] = useState("")
+  const [sortOrder, setSortOrder] = useState("")
+  const [checkAll, setCheckAll] = useState(JSON.parse(localStorage.getItem("checkAll")) || false)
 
   function handleCheckAll(e) {
+    setCheckAll(e.target.checked)
     if (e.target.checked) {
       agents.forEach(item => item.isChecked = true)
-    } else {
+    } 
+    else {
       agents.forEach(item => item.isChecked = false)
     }
     setAgents([...agents])
+  }
+
+  localStorage.setItem("checkAll", JSON.stringify(checkAll))
+
+  function handleSort() {
+    const sortedAgents = [...agents].sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.username.localeCompare(b.username)
+      } 
+      else {
+        return b.username.localeCompare(a.username)
+      }
+    })
+    setAgents(sortedAgents)
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc")
   }
 
   function handleSearch(e) {
@@ -34,7 +53,7 @@ function Agents() {
       <div className='flex items-center justify-between'>
         <h2 className='text-[25px] leading-[31px] text-white font-bold'>Agents</h2>
         <div className='flex items-center space-x-[20px]'>
-          <button>
+          <button onClick={handleSort}>
           <img src={sort} alt="sort img" width={25} height={25}/>
           </button>
           <input type="text" value={searchQuery}onChange={handleSearch} placeholder='Search Agents' required name='Searching' aria-label='Searching...' className='search-input text-[10px] py-[12px] rounded-[50px] pl-[50px] bg-transparent border-[2px] text-white w-[216px] border-white outline-none focus:shadow-md focus:shadow-white'/>
@@ -49,7 +68,7 @@ function Agents() {
           <thead>
             <tr>
               <th className='text-start w-[20%] pl-5 text-white font-bold text-[12px] leading-[19px]'>
-                <Checkbox onChange={handleCheckAll}>
+                <Checkbox checked={checkAll} onChange={handleCheckAll}>
                   <span className='text-white text-[12px] leading-[19px]'>Account Status</span>
                 </Checkbox>
               </th>

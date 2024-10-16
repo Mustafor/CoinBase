@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react'
 import { Delete, More } from '../assets/images/icons'
 import { Checkbox, Modal } from 'antd'
 import { Context } from '../context/Context'
+import { useNavigate } from 'react-router-dom'
 
 function AgentsItem({ item }) {
+  const navigate = useNavigate()
   const { agents, setAgents } = useContext(Context)
   const [isPending, setIsPending] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -62,7 +64,7 @@ function AgentsItem({ item }) {
           <button onClick={showDeleteModal} className='hover:scale-125 duration-300'>
             <Delete />
           </button>
-          <button className='hover:scale-125 duration-300'>
+          <button onClick={() => navigate(`${item.id}`)} className='hover:scale-125 duration-300'>
             <More />
           </button>
         </td>
